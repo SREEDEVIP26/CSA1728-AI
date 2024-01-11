@@ -1,0 +1,18 @@
+% Facts: Define fruits and their possible colors
+fruit_color(apple, red).
+fruit_color(banana, yellow).
+fruit_color(grape, purple).
+fruit_color(orange, orange).
+
+% Rule: Define a predicate to check if a given fruit has a specified color
+has_color(Fruit, Color) :- fruit_color(Fruit, Color).
+
+% Backtracking example: Find the color of a specific fruit
+find_color(Fruit, Color) :- has_color(Fruit, Color).
+
+% Backtracking example: Find fruits with a specific color
+find_fruit_with_color(Color, Fruit) :- has_color(Fruit, Color).
+
+% Example queries:
+% ?- find_color(apple, Color).     % Outputs: Color = red.
+% ?- find_fruit_with_color(red, Fruit).  % Outputs: Fruit = apple.
