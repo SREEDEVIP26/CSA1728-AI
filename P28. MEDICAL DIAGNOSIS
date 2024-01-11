@@ -1,0 +1,12 @@
+symptom(john, fever).
+symptom(john, cough).
+symptom(jane, headache).
+has_condition(Patient, flu) :- symptom(Patient, fever), symptom(Patient, cough).
+has_condition(Patient, cold) :- symptom(Patient, cough), not(symptom(Patient, fever)).
+has_condition(Patient, migraine) :- symptom(Patient, headache).
+infer_conditions :-
+    symptom(Patient, _),
+    write('Patient '), write(Patient), write(' has the following conditions: '),
+    findall(Condition, has_condition(Patient, Condition), Conditions),
+    write(Conditions), nl,
+    fail.
